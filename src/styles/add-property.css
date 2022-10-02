@@ -1,28 +1,50 @@
 .add-property {
   display: flex;
-  padding: 15pt;
+  padding: 30pt;
   align-items: center;
   flex-direction: column;
+  font-size: 15pt;
 }
 
 .add-property-form {
   display: grid;
   grid-template-columns: auto;
+  background-color: white;
+  width: 500pt;
+  height: 650pt;
+  border-radius: 10px;
 }
 
 .form-field {
   padding: 10pt;
-  display: flex;
-  flex-direction: row;
 }
 
-.form-label {
-  display: inline-flex;
-  flex-direction: row;
-  margin-right: 5pt;
+.form-button {
+  padding: 10pt;
 }
 
-.form-input {
-  display: inline-flex;
-  flex-direction: row;
+input {
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 10pt;
+  height: 20pt;
+  background-color: #fdfab9;
+  padding: 5pt;
+}
+
+select {
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 10pt;
+  height: 20pt;
+  background-color: #fdfab9;
+}
+
+button {
+  background-color: #6f495f;
+  height: 30pt;
+  width: 50pt;
+  border-radius: 10px;
+  font-size: 12pt;
+  color: white;
 }
