@@ -1,0 +1,23 @@
+.navbar {
+  background-color: white;
+  border-bottom-color: grey;
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar__logo {
+  height: 50pt;
+  width: 150pt;
+}
+
+.navbar-links {
+  margin: 0pt;
+  padding: 0pt;
+}
+
+.navbar-links-item {
+  margin: 0pt;
+  padding: 15pt;
+  font-size: 15pt;
+  display: inline-block;
+}
