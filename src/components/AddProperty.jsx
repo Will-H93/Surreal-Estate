@@ -18,7 +18,6 @@ const AddProperty = () => {
 
   const handleAddProperty = (event) => {
     event.preventDefault();
-    console.log(fields);
   };
 
   const handleFieldChange = (event) => {
