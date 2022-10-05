@@ -1,0 +1,7 @@
+.properties {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-right: 30px;
+    margin-left: 10px;
+    column-gap: 30px;
+}
