@@ -27,15 +27,7 @@ const AddProperty = () => {
     event.preventDefault();
     setAlert({ message: "", isSuccess: false });
     axios
-      .post("http://localhost:4000/api/v1/PropertyListing", {
-        title: fields.title,
-        type: fields.type,
-        bedrooms: fields.bedrooms,
-        bathrooms: fields.bathrooms,
-        price: fields.price,
-        city: fields.city,
-        email: fields.email,
-      })
+      .post("http://localhost:4000/api/v1/PropertyListing", fields)
       .then(() => {
         setAlert({
           message: "Property Added",
