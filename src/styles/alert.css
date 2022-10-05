@@ -1,0 +1,16 @@
+.alert {
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 10px;
+    padding-left: 5px;
+}
+
+.alert.alert-success {
+    background-color: lightgreen;
+    color: darkgreen;
+}
+  
+.alert.alert-error {
+    background-color: rgb(255, 93, 93);
+    color: rgb(150, 0, 0);
+}

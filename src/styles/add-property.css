@@ -10,40 +10,40 @@
   display: grid;
   grid-template-columns: auto;
   background-color: white;
-  width: 500pt;
-  height: 650pt;
+  width: 500px;
+  height: 650px;
   border-radius: 10px;
 }
 
 .form-field {
-  padding: 10pt;
+  padding: 10px;
 }
 
 .form-button {
-  padding: 10pt;
+  padding: 10px;
 }
 
 input {
   box-sizing: border-box;
   border-radius: 10px;
   font-size: 10pt;
-  height: 20pt;
+  height: 20px;
   background-color: #fdfab9;
-  padding: 5pt;
+  padding: 5px;
 }
 
 select {
   box-sizing: border-box;
   border-radius: 10px;
   font-size: 10pt;
-  height: 20pt;
+  height: 20px;
   background-color: #fdfab9;
 }
 
 button {
   background-color: #6f495f;
-  height: 30pt;
-  width: 50pt;
+  height: 30px;
+  width: 50px;
   border-radius: 10px;
   font-size: 12pt;
   color: white;
