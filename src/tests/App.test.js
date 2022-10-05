@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import App from "../components/App";
+import { MemoryRouter } from 'react-router-dom';
 
 test("renders app", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Surreal Estate/i);
+  const { asFragment } = render(<App />, {wrapper: MemoryRouter});
 
-  expect(linkElement).toBeInTheDocument();
+  expect(asFragment()).toMatchSnapshot();
 });
