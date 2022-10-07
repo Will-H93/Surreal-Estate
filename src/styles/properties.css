@@ -1,7 +1,14 @@
 .properties {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-right: 30px;
-    margin-left: 10px;
-    column-gap: 30px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  margin-right: 30px;
+  column-gap: 30px;
+}
+
+.property-card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-right: 30px;
+  margin-left: 10px;
+  column-gap: 30px;
 }

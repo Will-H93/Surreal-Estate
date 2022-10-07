@@ -6,18 +6,18 @@
 }
 
 .navbar__logo {
-  height: 50pt;
-  width: 150pt;
+  height: 60px;
+  width: 180px;
 }
 
 .navbar-links {
-  margin: 0pt;
-  padding: 0pt;
+  margin: 0px;
+  padding: 0px;
 }
 
 .navbar-links-item {
-  margin: 0pt;
-  padding: 15pt;
+  margin: 0px;
+  padding: 15px;
   font-size: 15pt;
   display: inline-block;
 }
