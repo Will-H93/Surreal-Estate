@@ -1,16 +1,22 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import qs from "qs";
 import "../styles/sidebar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SideBar = () => {
-  const buildQueryString = (operation, valueObj) => {
-    const { search } = useLocation();
+  const [query, setQuery] = useState("");
+  const { search } = useLocation();
 
+  const buildQueryString = (operation, valueObj) => {
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...currentQueryParams,
-      [operation]: JSON.stringify(valueObj),
+      [operation]: JSON.stringify({
+        ...JSON.parse(currentQueryParams[operation] || "{}"),
+        ...valueObj,
+      }),
     };
 
     return qs.stringify(newQueryParams, {
@@ -19,8 +25,30 @@ const SideBar = () => {
     });
   };
 
+  const navigate = useNavigate();
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+    const newQueryString = buildQueryString("query", {
+      title: { $regex: query },
+    });
+
+    navigate(newQueryString);
+  };
+
   return (
     <div className="sidebar">
+      <form className="search" onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button type="submit">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
+      </form>
       <h2>Filter By City</h2>
       <Link to={buildQueryString("query", { city: "Liverpool" })}>
         Liverpool
