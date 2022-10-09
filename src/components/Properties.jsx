@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +7,7 @@ import Alert from "./Alert";
 import SideBar from "./SideBar";
 import "../styles/properties.css";
 
-const Properties = () => {
+const Properties = ({ userID }) => {
   const initialState = {
     properties: [],
     alert: {
@@ -43,17 +44,33 @@ const Properties = () => {
       });
   }, [search]);
 
+  const handleSaveProperty = (propertyId) => {
+    axios.post("http://localhost:4000/api/v1/Favourite", {
+      propertyListing: propertyId,
+      fbUserId: userID,
+    });
+  };
+
   return (
     <div className="properties">
       <SideBar />
       <Alert message={alert.message} success={alert.isSuccess} />
       <div className="property-card-container">
         {properties.map((property) => (
-          <PropertyCard key={property._id} {...property} />
+          <PropertyCard
+            key={property._id}
+            {...property}
+            userID={userID}
+            onSaveProperty={handleSaveProperty}
+          />
         ))}
       </div>
     </div>
   );
+};
+
+Properties.propTypes = {
+  userID: PropTypes.string.isRequired,
 };
 
 export default Properties;

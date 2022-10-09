@@ -7,9 +7,11 @@ import {
   faBed,
   faSterlingSign,
   faEnvelope,
+  faStar,
 } from "@fortawesome/free-solid-svg-icons";
 
 const PropertyCard = ({
+  _id,
   title,
   type,
   bathrooms,
@@ -17,6 +19,8 @@ const PropertyCard = ({
   price,
   city,
   email,
+  onSaveProperty,
+  userID,
 }) => {
   return (
     <div className="property-card">
@@ -47,18 +51,35 @@ const PropertyCard = ({
           Email
         </a>
       </div>
+      <div className="property-card-favourite">
+        {userID && (
+          <button
+            type="button"
+            onClick={() => onSaveProperty(_id)}
+            className="save"
+          >
+            <div className="property-card-favourite-icon">
+              <FontAwesomeIcon icon={faStar} />
+            </div>
+            Save
+          </button>
+        )}
+      </div>
     </div>
   );
 };
 
 PropertyCard.propTypes = {
+  _id: PropTypes.string.isRequired,
   bathrooms: PropTypes.string.isRequired,
   bedrooms: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  onSaveProperty: PropTypes.func.isRequired,
   price: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired,
 };
 
 export default PropertyCard;
