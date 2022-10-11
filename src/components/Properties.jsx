@@ -7,29 +7,29 @@ import Alert from "./Alert";
 import SideBar from "./SideBar";
 import "../styles/properties.css";
 
-const Properties = ({ userID }) => {
-  const initialState = {
-    properties: [],
-    alert: {
-      message: "",
-      isSuccess: false,
-    },
-  };
+const Properties = ({ properties, setProperties, setAlert, userID }) => {
+  // const initialState = {
+  //   properties: [],
+  //   alert: {
+  //     message: "",
+  //     isSuccess: false,
+  //   },
+  // };
 
-  const [properties, setProperties] = useState(initialState.properties);
-  const [alert, setAlert] = useState(initialState.alert);
+  // const [properties, setProperties] = useState(initialState.properties);
+  // const [alert, setAlert] = useState(initialState.alert);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/v1/PropertyListing`)
-      .then(({ data }) => setProperties(data))
-      .catch(() => {
-        setAlert({
-          message: "Server error. Please try again later.",
-          isSuccess: false,
-        });
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:4000/api/v1/PropertyListing`)
+  //     .then(({ data }) => setProperties(data))
+  //     .catch(() => {
+  //       setAlert({
+  //         message: "Server error. Please try again later.",
+  //         isSuccess: false,
+  //       });
+  //     });
+  // }, []);
 
   const { search } = useLocation();
   useEffect(() => {

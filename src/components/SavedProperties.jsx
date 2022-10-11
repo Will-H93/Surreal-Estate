@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SavedFavouriteCard from "./SavedFavouriteCard";
 
-const SavedProperties = ({ userID }) => {
+const SavedProperties = ({ properties, userID }) => {
   const initialState = {
     favourites: [],
     listing: [],
@@ -17,31 +17,41 @@ const SavedProperties = ({ userID }) => {
   const [listing, setListing] = useState(initialState.listing);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/v1/Favourite`)
-      .then(({ data }) => setFavourites(data));
-  }, []);
+    axios.get(`http://localhost:4000/api/v1/Favourite`).then(({ data }) => {
+      setFavourites(data);
+      const filteredList = [];
+      for (let i = 0; i < favourites.length; i += 1) {
+        const filteredArray = properties.filter(
+          (property) => property._id === favourites[i].propertyListing
+        );
+        const finalArray = filteredArray.map((v) =>
+          Object.assign(v, { favId: favourites[i]._id })
+        );
+        filteredList.push(...finalArray);
+      }
+      setListing(filteredList);
+      console.log(favourites);
+    });
+  }, [favourites, listing]);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/v1/PropertyListing/`)
-      .then(({ data }) => {
-        const filteredList = [];
-        for (let i = 0; i < favourites.length; i += 1) {
-          const filteredArray = data.filter(
-            (list) => list._id === favourites[i].propertyListing
-          );
-          const finalArray = filteredArray.map((v) =>
-            Object.assign(v, { favId: favourites[i]._id })
-          );
-          filteredList.push(...finalArray);
-        }
-        setListing(filteredList);
-      });
-  }, [favourites]);
-
-  console.log(favourites);
-  console.log(listing);
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:4000/api/v1/PropertyListing/`)
+  //     .then(({ data }) => {
+  //       const filteredList = [];
+  //       for (let i = 0; i < favourites.length; i += 1) {
+  //         const filteredArray = data.filter(
+  //           (list) => list._id === favourites[i].propertyListing
+  //         );
+  //         const finalArray = filteredArray.map((v) =>
+  //           Object.assign(v, { favId: favourites[i]._id })
+  //         );
+  //         filteredList.push(...finalArray);
+  //       }
+  //       setListing(filteredList);
+  //       console.log(favourites);
+  //     });
+  // }, [favourites, listing]);
 
   const handleDeleteFavourite = (favouriteId) => {
     axios.delete(`http://localhost:4000/api/v1/Favourite/${favouriteId}`, {
