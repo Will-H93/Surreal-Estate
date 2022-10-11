@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Properties from "./Properties";
 import AddProperty from "./AddProperty";
+import SavedProperties from "./SavedProperties";
 
 const App = () => {
   const [userID, setUserID] = useState("");
@@ -23,6 +24,10 @@ const App = () => {
       <NavBar onLogin={handleLogin} userID={userID} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Properties userID={userID} />} />
+        <Route
+          path="saved-properties"
+          element={<SavedProperties userID={userID} />}
+        />
         <Route path="add-property" element={<AddProperty />} />
       </Routes>
     </div>

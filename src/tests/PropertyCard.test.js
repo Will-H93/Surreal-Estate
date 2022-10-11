@@ -1,8 +1,10 @@
+import React from "react";
 import { render } from "@testing-library/react";
 import PropertyCard from "../components/PropertyCard";
 
 describe("PropertyCard", () => {
   const validProps = {
+    _id: "1",
     title: "2-bed semi-detached",
     type: "Semi-Detatched",
     bedrooms: "2",
@@ -10,6 +12,8 @@ describe("PropertyCard", () => {
     price: "200000",
     city: "Liverpool",
     email: "email@email.com",
+    onSaveProperty: jest.fn(),
+    userID: "1",
   };
 
   test("renders title prop", () => {

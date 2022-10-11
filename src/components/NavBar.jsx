@@ -18,6 +18,15 @@ const NavBar = ({ onLogin, userID, onLogout }) => {
             View Properties
           </Link>
         </li>
+        {userID ? (
+          <li className="navbar-links-item">
+            <Link className="item" to="saved-properties">
+              Saved Properties
+            </Link>
+          </li>
+        ) : (
+          ""
+        )}
         <li className="navbar-links-item">
           <Link className="item" to="add-property">
             Add a Property
@@ -43,8 +52,8 @@ const NavBar = ({ onLogin, userID, onLogout }) => {
 };
 
 NavBar.propTypes = {
-  onLogin: PropTypes.string.isRequired,
-  onLogout: PropTypes.string.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
   userID: PropTypes.string.isRequired,
 };
 
