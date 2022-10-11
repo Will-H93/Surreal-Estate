@@ -79,6 +79,9 @@ const SavedProperties = ({ properties, userID }) => {
 };
 
 SavedProperties.propTypes = {
+  properties: PropTypes.shape({
+    filter: PropTypes.func.isRequired,
+  }).isRequired,
   userID: PropTypes.string.isRequired,
 };
 

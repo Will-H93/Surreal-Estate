@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import PropertyCard from "./PropertyCard";
@@ -8,29 +8,6 @@ import SideBar from "./SideBar";
 import "../styles/properties.css";
 
 const Properties = ({ properties, setProperties, setAlert, userID }) => {
-  // const initialState = {
-  //   properties: [],
-  //   alert: {
-  //     message: "",
-  //     isSuccess: false,
-  //   },
-  // };
-
-  // const [properties, setProperties] = useState(initialState.properties);
-  // const [alert, setAlert] = useState(initialState.alert);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:4000/api/v1/PropertyListing`)
-  //     .then(({ data }) => setProperties(data))
-  //     .catch(() => {
-  //       setAlert({
-  //         message: "Server error. Please try again later.",
-  //         isSuccess: false,
-  //       });
-  //     });
-  // }, []);
-
   const { search } = useLocation();
   useEffect(() => {
     axios
@@ -70,7 +47,12 @@ const Properties = ({ properties, setProperties, setAlert, userID }) => {
 };
 
 Properties.propTypes = {
+  properties: PropTypes.shape({
+    map: PropTypes.func.isRequired,
+  }),
+  setAlert: PropTypes.func.isRequired,
+  setProperties: PropTypes.func.isRequired,
   userID: PropTypes.string.isRequired,
-};
+}.isRequired;
 
 export default Properties;
