@@ -13,45 +13,32 @@ const SavedProperties = ({ properties, userID }) => {
     },
   };
 
-  const [favourites, setFavourites] = useState(initialState.favourites);
   const [listing, setListing] = useState(initialState.listing);
 
-  useEffect(() => {
-    axios.get(`http://localhost:4000/api/v1/Favourite`).then(({ data }) => {
-      setFavourites(data);
-      const filteredList = [];
-      for (let i = 0; i < favourites.length; i += 1) {
-        const filteredArray = properties.filter(
-          (property) => property._id === favourites[i].propertyListing
-        );
-        const finalArray = filteredArray.map((v) =>
-          Object.assign(v, { favId: favourites[i]._id })
-        );
-        filteredList.push(...finalArray);
-      }
-      setListing(filteredList);
-      console.log(favourites);
-    });
-  }, [favourites, listing]);
+  const checkProperties = async () => {
+    await properties;
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:4000/api/v1/PropertyListing/`)
-  //     .then(({ data }) => {
-  //       const filteredList = [];
-  //       for (let i = 0; i < favourites.length; i += 1) {
-  //         const filteredArray = data.filter(
-  //           (list) => list._id === favourites[i].propertyListing
-  //         );
-  //         const finalArray = filteredArray.map((v) =>
-  //           Object.assign(v, { favId: favourites[i]._id })
-  //         );
-  //         filteredList.push(...finalArray);
-  //       }
-  //       setListing(filteredList);
-  //       console.log(favourites);
-  //     });
-  // }, [favourites, listing]);
+    if (properties) {
+      axios.get(`http://localhost:4000/api/v1/Favourite`).then(({ data }) => {
+        const filteredList = [];
+        for (let i = 0; i < data.length; i += 1) {
+          const filteredArray = properties.filter(
+            (property) => property._id === data[i].propertyListing
+          );
+          const finalArray = filteredArray.map((v) =>
+            Object.assign(v, { favId: data[i]._id })
+          );
+          filteredList.push(...finalArray);
+        }
+        console.log(filteredList);
+        setListing(filteredList);
+      });
+    }
+  };
+
+  useEffect(() => {
+    checkProperties();
+  }, []);
 
   const handleDeleteFavourite = (favouriteId) => {
     axios.delete(`http://localhost:4000/api/v1/Favourite/${favouriteId}`, {
@@ -59,11 +46,6 @@ const SavedProperties = ({ properties, userID }) => {
       fbUserId: userID,
     });
   };
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/v1/Favourite`)
-      .then(({ data }) => setFavourites(data));
-  }, [handleDeleteFavourite]);
 
   return (
     <div className="favourites">
