@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import PropertyCard from "./PropertyCard";
@@ -7,30 +7,7 @@ import Alert from "./Alert";
 import SideBar from "./SideBar";
 import "../styles/properties.css";
 
-const Properties = ({ userID }) => {
-  const initialState = {
-    properties: [],
-    alert: {
-      message: "",
-      isSuccess: false,
-    },
-  };
-
-  const [properties, setProperties] = useState(initialState.properties);
-  const [alert, setAlert] = useState(initialState.alert);
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/v1/PropertyListing`)
-      .then(({ data }) => setProperties(data))
-      .catch(() => {
-        setAlert({
-          message: "Server error. Please try again later.",
-          isSuccess: false,
-        });
-      });
-  }, []);
-
+const Properties = ({ userID, properties, setProperties, alert, setAlert }) => {
   const { search } = useLocation();
   useEffect(() => {
     axios
@@ -70,6 +47,23 @@ const Properties = ({ userID }) => {
 };
 
 Properties.propTypes = {
+  alert: PropTypes.shape({
+    isSuccess: PropTypes.bool.isRequired,
+    message: PropTypes.string.isRequired,
+  }).isRequired,
+  properties: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      bedrooms: PropTypes.string.isRequired,
+      bathrooms: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  setAlert: PropTypes.func.isRequired,
+  setProperties: PropTypes.func.isRequired,
   userID: PropTypes.string.isRequired,
 };
 
