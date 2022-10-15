@@ -5,8 +5,7 @@ import axios from "axios";
 import NavBar from "./NavBar";
 import Properties from "./Properties";
 import AddProperty from "./AddProperty";
-import SavedProperties from "./SavedProperties";
-import Alert from "./Alert";
+import SavedFavourites from "./SavedFavourites";
 
 const App = () => {
   const initialState = {
@@ -15,9 +14,10 @@ const App = () => {
       message: "",
       isSuccess: false,
     },
+    userID: "",
   };
-  const [userID, setUserID] = useState("");
 
+  const [userID, setUserID] = useState(initialState.userID);
   const [properties, setProperties] = useState(initialState.properties);
   const [alert, setAlert] = useState(initialState.alert);
 
@@ -34,8 +34,16 @@ const App = () => {
   }, []);
 
   const handleLogin = (response) => {
-    setUserID(response.userID);
+    const thisUserId = response.userID;
+    setUserID(thisUserId);
+    window.localStorage.setItem("userID", thisUserId);
   };
+
+  const thisUserId = window.localStorage.getItem("userID");
+
+  if (thisUserId && !userID) {
+    setUserID(thisUserId);
+  }
 
   const handleLogout = () => {
     // eslint-disable-next-line no-unused-vars, func-names
@@ -43,25 +51,41 @@ const App = () => {
     setUserID("");
   };
 
+  if (properties.length === 0) {
+    return (
+      <div className="App">
+        <NavBar
+          handleLogin={handleLogin}
+          userID={userID}
+          handleLogout={handleLogout}
+        />
+        <p>Loading...</p>
+      </div>
+    );
+  }
   return (
     <div className="App">
-      <NavBar onLogin={handleLogin} userID={userID} onLogout={handleLogout} />
-      <Alert message={alert.message} success={alert.isSuccess} />
+      <NavBar
+        handleLogin={handleLogin}
+        userID={userID}
+        handleLogout={handleLogout}
+      />
       <Routes>
         <Route
           path="/"
           element={
             <Properties
+              userID={userID}
               properties={properties}
               setProperties={setProperties}
+              alert={alert}
               setAlert={setAlert}
-              userID={userID}
             />
           }
         />
         <Route
-          path="saved-properties"
-          element={<SavedProperties properties={properties} userID={userID} />}
+          path="saved-favourites"
+          element={<SavedFavourites properties={properties} />}
         />
         <Route path="add-property" element={<AddProperty />} />
       </Routes>

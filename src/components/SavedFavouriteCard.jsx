@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "../styles/saved-favourite-card.css";
+import "../styles/saved-favourites-card.css";
 
 const SavedFavouriteCard = ({ favId, title, onDeleteFavourite }) => {
   return (
@@ -21,8 +21,8 @@ const SavedFavouriteCard = ({ favId, title, onDeleteFavourite }) => {
 
 SavedFavouriteCard.propTypes = {
   favId: PropTypes.string.isRequired,
-  onDeleteFavourite: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  onDeleteFavourite: PropTypes.func.isRequired,
 };
 
 export default SavedFavouriteCard;

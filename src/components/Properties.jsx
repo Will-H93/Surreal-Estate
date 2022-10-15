@@ -7,7 +7,7 @@ import Alert from "./Alert";
 import SideBar from "./SideBar";
 import "../styles/properties.css";
 
-const Properties = ({ properties, setProperties, setAlert, userID }) => {
+const Properties = ({ userID, properties, setProperties, alert, setAlert }) => {
   const { search } = useLocation();
   useEffect(() => {
     axios
@@ -47,12 +47,24 @@ const Properties = ({ properties, setProperties, setAlert, userID }) => {
 };
 
 Properties.propTypes = {
-  properties: PropTypes.shape({
-    map: PropTypes.func.isRequired,
-  }),
+  alert: PropTypes.shape({
+    isSuccess: PropTypes.bool.isRequired,
+    message: PropTypes.string.isRequired,
+  }).isRequired,
+  properties: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      bedrooms: PropTypes.string.isRequired,
+      bathrooms: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   setAlert: PropTypes.func.isRequired,
   setProperties: PropTypes.func.isRequired,
   userID: PropTypes.string.isRequired,
-}.isRequired;
+};
 
 export default Properties;

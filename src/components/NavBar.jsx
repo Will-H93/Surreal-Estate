@@ -4,7 +4,7 @@ import FacebookLogin from "react-facebook-login";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 
-const NavBar = ({ onLogin, userID, onLogout }) => {
+const NavBar = ({ handleLogin, userID, handleLogout }) => {
   return (
     <div className="navbar">
       <img
@@ -20,7 +20,7 @@ const NavBar = ({ onLogin, userID, onLogout }) => {
         </li>
         {userID ? (
           <li className="navbar-links-item">
-            <Link className="item" to="saved-properties">
+            <Link className="item" to="saved-favourites">
               Saved Properties
             </Link>
           </li>
@@ -38,11 +38,11 @@ const NavBar = ({ onLogin, userID, onLogout }) => {
           <FacebookLogin
             appId="1485792895238619"
             fields="name,email,picture"
-            callback={onLogin}
+            callback={handleLogin}
             icon="fa-facebook"
           />
         ) : (
-          <button type="submit" onClick={onLogout}>
+          <button type="submit" onClick={handleLogout}>
             Sign Out
           </button>
         )}
@@ -52,8 +52,8 @@ const NavBar = ({ onLogin, userID, onLogout }) => {
 };
 
 NavBar.propTypes = {
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
   userID: PropTypes.string.isRequired,
 };
 
