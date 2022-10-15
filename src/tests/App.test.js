@@ -1,9 +1,14 @@
+import React from "react";
 import { render } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import App from "../components/App";
-import { MemoryRouter } from "react-router-dom";
 
 test("renders app", () => {
-  const { asFragment } = render(<App />, { wrapper: MemoryRouter });
+  const { asFragment } = render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
 
   expect(asFragment()).toMatchSnapshot();
 });
