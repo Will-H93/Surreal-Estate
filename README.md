@@ -47,6 +47,7 @@ A Single Page Application built using React that will allow you to add and searc
 
 - Fix the logout button, it retains the old facebook hash value and will just regenerate a new one when you login. Only happens if you logout after reloading the site and doesn't stop the actual functionality from working.
 - Fix the nav styling on smaller desktops, so it doesn't bleed into other elements on the page.
+- Have a way to reset all filters without needing to reload the app.
 
 ## Author
 
