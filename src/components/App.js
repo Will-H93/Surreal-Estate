@@ -1,4 +1,4 @@
-import "../styles/app.css";
+import "../styles/css/app.css";
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
@@ -49,6 +49,7 @@ const App = () => {
     // eslint-disable-next-line no-unused-vars, func-names
     window.FB.logout(function (response) {});
     setUserID("");
+    window.localStorage.setItem("userID", "");
   };
 
   if (properties.length === 0) {

@@ -5,7 +5,7 @@ import axios from "axios";
 import PropertyCard from "./PropertyCard";
 import Alert from "./Alert";
 import SideBar from "./SideBar";
-import "../styles/properties.scss";
+import "../styles/sass/properties.scss";
 
 const Properties = ({ userID, properties, setProperties, alert, setAlert }) => {
   const { search } = useLocation();

@@ -1,7 +1,19 @@
 @import "config";
 
-@media (min-width: 780px) {
-  .sidebar {
+@mixin bp($screen) {
+  @if $screen == desktop {
+    @media #{$desktop} {
+      @content;
+    }
+  } @else if $screen == tablet {
+    @media #{$tablet} {
+      @content;
+    }
+  }
+}
+
+.sidebar {
+  @include bp(desktop) {
     display: flex;
     flex-direction: column;
     grid-column: 1;
@@ -22,7 +34,7 @@
       padding: 10px;
       font-size: $fontSize;
       &:hover {
-          background-color: darken($whiteBackground, 10%);
+        background-color: darken($whiteBackground, 10%);
       }
     }
     h2 {
@@ -51,10 +63,7 @@
       }
     }
   }
-}
-
-@media (min-width: $mobile) and (max-width: $tablet) {
-  .sidebar {
+  @include bp(tablet) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     flex-direction: row;
@@ -100,7 +109,7 @@
       color: black;
       font-size: $fontSize;
       &:hover {
-          background-color: darken($whiteBackground, 10%);
+        background-color: darken($whiteBackground, 10%);
       }
     }
     h2 {

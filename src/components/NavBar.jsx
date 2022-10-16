@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import FacebookLogin from "react-facebook-login";
 import { Link } from "react-router-dom";
-import "../styles/navbar.scss";
+import "../styles/sass/navbar.scss";
 
 const NavBar = ({ handleLogin, userID, handleLogout }) => {
   return (

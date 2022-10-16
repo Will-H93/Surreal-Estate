@@ -3,5 +3,6 @@ $margin: 0px;
 $whiteBackground: white;
 $facebookSignOut: #4267b2;
 $buttonBackground: #6f495f;
-$mobile: 480px;
-$tablet: 768px;
+$mobile: "(max-width: 480px)";
+$tablet: "(max-width: 768px)";
+$desktop: "(min-width: 769px)";

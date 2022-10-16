@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../styles/add-property.scss";
+import "../styles/sass/add-property.scss";
 import Alert from "./Alert";
 
 const AddProperty = () => {
