@@ -9,6 +9,10 @@
     @media #{$tablet} {
       @content;
     }
+  } @else if $screen == mobile {
+    @media #{$mobile} {
+      @content;
+    }
   }
 }
 
@@ -116,6 +120,26 @@
       border: 0px;
       padding: 5px 0px 0px 5px;
       margin: 0px;
+    }
+  }
+  @include bp(mobile) {
+    font-size: 15px;
+    height: 90%;
+    .byCity {
+      row-gap: 10px;
+    }
+    .byOrder {
+      row-gap: 10px;
+    }
+    .search{
+      input {
+        width: 80%;
+        margin-top: 15px;
+      }
+      button {
+        width: 80%;
+        margin-top: 10px;
+      }
     }
   }
 }

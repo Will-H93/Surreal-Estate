@@ -1,48 +1,10 @@
 @import "config";
+@import "navbar-config";
 
-.navbar {
-  background-color: $whiteBackground;
-  border-bottom: 1px solid lightgrey;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  .logo {
-    align-self: center;
-    height: 70px;
-    width: 200px;
-  }
-  .links {
-    flex: 1;
-    margin: $margin;
-    padding: 0px;
-    .item {
-      margin: $margin;
-      padding: 15px;
-      font-size: $fontSize;
-      display: inline-block;
-      &:hover {
-        background-color: darken($whiteBackground, 10%);
-      }
-    }
-  }
-  .facebook-login {
-    button {
-      margin: $margin;
-      padding: 0px 20px 0px 20px;
-      width: 100%;
-      height: 100%;
-      font-size: $fontSize;
-      color: white;
-      border: none;
-      font-weight: bold;
-      background-color: $facebookSignOut;
-      &:hover {
-        background-color: lighten($facebookSignOut, 10%);
-      }
-    }
-  }
-  a {
-    text-decoration: none;
-    color: black;
-  }
+@if (min-width: $desktop) {
+  @include bp(desktop);
+} @else if (min-width: $mobile) {
+  @include bp(tablet);
+} @else if (max-width: $mobile) {
+  @include bp(mobile);
 }
