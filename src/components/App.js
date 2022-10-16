@@ -46,10 +46,9 @@ const App = () => {
   }
 
   const handleLogout = () => {
-    // eslint-disable-next-line no-unused-vars, func-names
-    window.FB.logout(function (response) {});
     setUserID("");
-    window.localStorage.setItem("userID", "");
+    window.localStorage.removeItem("userID");
+    window.FB.logout();
   };
 
   if (properties.length === 0) {

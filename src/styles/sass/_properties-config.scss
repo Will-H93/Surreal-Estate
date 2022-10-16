@@ -9,8 +9,7 @@
     @media #{$tablet} {
       @content;
     }
-  }
-  @else if $screen == mobile {
+  } @else if $screen == mobile {
     @media #{$mobile} {
       @content;
     }
@@ -18,8 +17,8 @@
 }
 
 .properties {
-    display: grid;
-    @include bp(tablet) {
+  display: grid;
+  @include bp(tablet) {
     grid-template-rows: 15% 85%;
     grid-template-columns: 100%;
     width: 100%;

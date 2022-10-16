@@ -23,6 +23,7 @@
     grid-column: 1;
     width: 100%;
     height: 100%;
+    padding-right: 10px;
     background-color: $whiteBackground;
     .byCity {
       display: flex;
@@ -131,7 +132,7 @@
     .byOrder {
       row-gap: 10px;
     }
-    .search{
+    .search {
       input {
         width: 80%;
         margin-top: 15px;
