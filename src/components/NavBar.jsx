@@ -2,24 +2,24 @@ import PropTypes from "prop-types";
 import React from "react";
 import FacebookLogin from "react-facebook-login";
 import { Link } from "react-router-dom";
-import "../styles/navbar.css";
+import "../styles/navbar.scss";
 
 const NavBar = ({ handleLogin, userID, handleLogout }) => {
   return (
     <div className="navbar">
       <img
-        className="navbar__logo"
+        className="logo"
         src="https://mcrcodes.s3.eu-west-2.amazonaws.com/course/surreal-estate/logo.png"
         alt="siteLogo"
       />
-      <ul className="navbar-links">
-        <li className="navbar-links-item">
+      <ul className="links">
+        <li className="item">
           <Link className="item" to="/">
             View Properties
           </Link>
         </li>
         {userID ? (
-          <li className="navbar-links-item">
+          <li className="item">
             <Link className="item" to="saved-favourites">
               Saved Properties
             </Link>
@@ -27,7 +27,7 @@ const NavBar = ({ handleLogin, userID, handleLogout }) => {
         ) : (
           ""
         )}
-        <li className="navbar-links-item">
+        <li className="item">
           <Link className="item" to="add-property">
             Add a Property
           </Link>
