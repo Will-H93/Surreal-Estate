@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import "../styles/sass/saved-favourite-card.scss";
+import "../styles/saved-favourite-card.scss";
 
 const SavedFavouriteCard = ({ favId, title, onDeleteFavourite }) => {
   return (

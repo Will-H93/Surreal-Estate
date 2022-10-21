@@ -10,7 +10,10 @@ A Single Page Application built using React that will allow you to add and searc
 
 ### Tablet
 
+#### Tablet with Nav open
 ![Tablet-Nav](./public/SE-nav-selected-tablet.JPG)
+
+#### Tablet with Nav closed
 ![Tablet-Without-Nav](./public/SE-nav-not-selected-tablet.JPG)
 
 ### Mobile
@@ -42,6 +45,7 @@ A Single Page Application built using React that will allow you to add and searc
 - Run `npm install`
 - Run `npm start`
 - Clone and run the Surreal-Estate-API in docker: [Surreal Estate API](https://github.com/MCRcodes/surreal-estate-api)
+- Run `npm test` to make sure tests still pass after making any changes.
 
 ## If I had more time
 
